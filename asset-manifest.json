@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/parallel-texts/static/css/main.e4da3b8d.chunk.css",
-    "main.js": "/parallel-texts/static/js/main.a3f6d52a.chunk.js",
-    "main.js.map": "/parallel-texts/static/js/main.a3f6d52a.chunk.js.map",
+    "main.css": "/parallel-texts/static/css/main.5259ff57.chunk.css",
+    "main.js": "/parallel-texts/static/js/main.0e85d437.chunk.js",
+    "main.js.map": "/parallel-texts/static/js/main.0e85d437.chunk.js.map",
     "runtime~main.js": "/parallel-texts/static/js/runtime~main.3fa88e3f.js",
     "runtime~main.js.map": "/parallel-texts/static/js/runtime~main.3fa88e3f.js.map",
-    "static/js/2.2125cc0e.chunk.js": "/parallel-texts/static/js/2.2125cc0e.chunk.js",
-    "static/js/2.2125cc0e.chunk.js.map": "/parallel-texts/static/js/2.2125cc0e.chunk.js.map",
+    "static/js/2.21b22054.chunk.js": "/parallel-texts/static/js/2.21b22054.chunk.js",
+    "static/js/2.21b22054.chunk.js.map": "/parallel-texts/static/js/2.21b22054.chunk.js.map",
     "index.html": "/parallel-texts/index.html",
-    "precache-manifest.abc344a92c9adf177929bf5fd1a76b7d.js": "/parallel-texts/precache-manifest.abc344a92c9adf177929bf5fd1a76b7d.js",
+    "precache-manifest.710a8c2166ac07e557c6055abfc875cb.js": "/parallel-texts/precache-manifest.710a8c2166ac07e557c6055abfc875cb.js",
     "service-worker.js": "/parallel-texts/service-worker.js",
-    "static/css/main.e4da3b8d.chunk.css.map": "/parallel-texts/static/css/main.e4da3b8d.chunk.css.map"
+    "static/css/main.5259ff57.chunk.css.map": "/parallel-texts/static/css/main.5259ff57.chunk.css.map"
   }
 }
