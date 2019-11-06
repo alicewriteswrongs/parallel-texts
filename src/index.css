@@ -62,7 +62,6 @@ code {
     width: 100%;
     flex-direction: row;
     justify-content: space-around;
-    margin-bottom: 15px;
 }
 
 .parallel-paragraph .pgraph {

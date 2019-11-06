@@ -4,23 +4,27 @@ import { Remarkable } from "remarkable"
 
 const md = new Remarkable()
 
-const getParagraphs = string => string.split('\n').filter(paragraph => paragraph !== "")
+const splitTags = string => {
+  const div = document.createElement('div')
+  div.innerHTML = string
+  return [...div.children].map(child => child.outerHTML)
+}
 
 const MarkdownElement = ({string}) => <div
   className="pgraph"
-  dangerouslySetInnerHTML={{__html: md.render(string)}}
+  dangerouslySetInnerHTML={{__html: string}}
 />
 
 export default function Document (props) {
   const { textOne, textTwo } = props
 
-  const paragraphs = zip(
-    getParagraphs(textOne),
-    getParagraphs(textTwo)
+  const tags = zip(
+    splitTags(md.render(textOne)),
+    splitTags(md.render(textTwo))
   )
 
   return <div className="parallel-doc">
-    {paragraphs.map(([elOne, elTwo]) => (
+    {tags.map(([elOne, elTwo]) => (
       <div className="parallel-paragraph">
         <MarkdownElement string={elOne || ""} />
         <MarkdownElement string={elTwo || ""} />
