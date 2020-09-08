@@ -85,4 +85,8 @@ code {
     .print {
         display: initial;
     }
+
+    .parallel-doc {
+        overflow: hidden;
+    }
 }
