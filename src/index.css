@@ -73,16 +73,20 @@ code {
     overflow: scroll;
 }
 
-.print {
-    display: none;
+.parallel-doc p {
+    font-size: 16px;
 }
 
-@media print {
-    .app .noprint {
-        display: none;
-    }
+/* .print { */
+/*     display: none; */
+/* } */
 
-    .print {
-        display: initial;
-    }
-}
+/* @media print { */
+/*     .app .noprint { */
+/*         display: none; */
+/*     } */
+
+/*     .print { */
+/*         display: initial; */
+/*     } */
+/* } */
