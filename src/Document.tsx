@@ -1,21 +1,26 @@
 import React from 'react';
 import { zip } from 'ramda'
-import { Remarkable } from "remarkable"
+import { Remarkable } from 'remarkable'
 
 const md = new Remarkable()
 
-const splitTags = string => {
+const splitTags = (string: string) => {
   const div = document.createElement('div')
   div.innerHTML = string
   return [...div.children].map(child => child.outerHTML)
 }
 
-const MarkdownElement = ({string}) => <div
+const MarkdownElement = ({string}: { string: string }) => <div
   className="pgraph"
   dangerouslySetInnerHTML={{__html: string}}
 />
 
-export default function Document (props) {
+type Props = {
+  textOne: string,
+  textTwo: string
+}
+
+export default function Document (props: Props) {
   const { textOne, textTwo } = props
 
   const tags = zip(

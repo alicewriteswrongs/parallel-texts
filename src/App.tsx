@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import Document from "./Document"
 
-function App() {
+export default function App() {
   const [textOne, setTextOne] = useState("")
   const [textTwo, setTextTwo] = useState("")
 
@@ -42,5 +42,3 @@ function App() {
     </div>
   )
 }
-
-export default App
