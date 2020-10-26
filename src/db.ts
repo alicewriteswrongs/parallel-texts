@@ -28,3 +28,5 @@ export class TextDatabase extends Dexie {
     this.translations = this.table("translations");
   }
 }
+
+export const db = new TextDatabase()
