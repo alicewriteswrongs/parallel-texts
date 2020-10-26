@@ -1,1 +1,1 @@
-declare module 'remarkable';
+declare module "remarkable";
