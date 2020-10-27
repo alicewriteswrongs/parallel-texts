@@ -13,9 +13,13 @@ code {
 }
 
 .app .noprint {
-  display: flex;
   width: 100%;
 }
+
+.app .document {
+  display: flex;
+}
+
 .noprint .inputs {
   width: 50%;
   height: 95vh;
@@ -89,4 +93,23 @@ code {
   .parallel-doc {
     overflow: hidden;
   }
+}
+
+.dialog {
+    top: 50px;
+}
+
+.dialog .close-button {
+    position: absolute;
+    top: 2px;
+    right: 5px;
+    cursor: pointer;
+}
+
+.dialog .form-inputs {
+    padding-bottom: 20px;
+}
+
+.dialog .save-button {
+    float: right;
 }

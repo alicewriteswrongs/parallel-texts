@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useCallback } from "react"
+
 import Document from "./Document"
+import AddDocumentDialog from './AddDocumentDialog'
 import { db, ParallelText, Translation } from "./db"
 
 // @ts-ignore
@@ -17,6 +19,13 @@ async function getTranslationsForText(
   }
 }
 
+async function getParallelTexts(
+  setParallelTexts: (xs: ParallelText[]) => void
+) {
+  const texts = await db.parallelTexts.toArray()
+  setParallelTexts(texts)
+}
+
 export default function App() {
   const [textOne, setTextOne] = useState("")
   const [textTwo, setTextTwo] = useState("")
@@ -28,24 +37,27 @@ export default function App() {
     []
   )
 
+  const [showDocDialog, setShowDocDialog] = useState(false)
+
   useEffect(() => {
-    async function fetchDataOnStartup() {
-      const texts = await db.parallelTexts.toArray()
-      setParallelTexts(texts)
-    }
-    fetchDataOnStartup()
+    getParallelTexts(setParallelTexts)
   }, [])
 
   useEffect(() => {
     getTranslationsForText(activeParallelText, setTranslationsForText)
   }, [activeParallelText, setTranslationsForText])
 
+  const toggleDocDialog = useCallback(e => {
+    e.preventDefault()
+    setShowDocDialog(open => !open)
+  }, [setShowDocDialog])
+
   return (
     <div className="app main-page">
       <div className="noprint">
-        <div className="inputs">
+        <div className="control-header">
           <select name="parallelText">
-            {parallelTexts.map((parallelText) => (
+            { parallelTexts.map((parallelText) => (
               <option
                 value={parallelText.id}
                 onSelect={(e: React.ChangeEvent<HTMLOptionElement>) => {
@@ -61,35 +73,42 @@ export default function App() {
               </option>
             ))}
           </select>
-          <div className="col">
-            <span className="label">Text One</span>
-            <textarea
-              className="text-one"
-              onChange={(e) => {
-                setTextOne(e.target.value)
-              }}
-            />
+          <button onClick={toggleDocDialog}>
+            Add a new document
+          </button>
+        </div>
+        <div className="document">
+          <div className="inputs">
+            <div className="col">
+              <span className="label">Text One</span>
+              <textarea
+                className="text-one"
+                onChange={(e) => {
+                  setTextOne(e.target.value)
+                }}
+              />
+            </div>
+            <div className="col">
+              <span className="label">Text Two</span>
+              <textarea
+                className="text-two"
+                onChange={(e) => {
+                  setTextTwo(e.target.value)
+                }}
+              />
+            </div>
           </div>
-          <div className="col">
-            <span className="label">Text Two</span>
-            <textarea
-              className="text-two"
-              onChange={(e) => {
-                setTextTwo(e.target.value)
-              }}
-            />
+          <div className="dynamic-preview">
+            <span className="label">Preview</span>
+            <Document textOne={textOne} textTwo={textTwo} />
           </div>
         </div>
-        <div className="dynamic-preview">
-          <span className="label">Preview</span>
+        <div className="noprint help-text">
+          Paste in your text, adjust till the preview looks right, then print!
+        </div>
+        <div className="print">
           <Document textOne={textOne} textTwo={textTwo} />
         </div>
-      </div>
-      <div className="noprint help-text">
-        Paste in your text, adjust till the preview looks right, then print!
-      </div>
-      <div className="print">
-        <Document textOne={textOne} textTwo={textTwo} />
       </div>
     </div>
   )
