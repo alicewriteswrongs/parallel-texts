@@ -52,9 +52,16 @@ export default function App() {
     setShowDocDialog(open => !open)
   }, [setShowDocDialog])
 
+  console.log(parallelTexts);
+
   return (
     <div className="app main-page">
       <div className="noprint">
+        { showDocDialog ?
+        <AddDocumentDialog
+          setShowDocDialog={setShowDocDialog}
+        />
+      : null }
         <div className="control-header">
           <select name="parallelText">
             { parallelTexts.map((parallelText) => (

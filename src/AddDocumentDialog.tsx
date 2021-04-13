@@ -10,7 +10,7 @@ export default function AddDocumentDialog(props: Props) {
   const { setShowDocDialog} = props
 
   // const closeDialog = useCallback((e: MouseEvent<HTMLDivElement>): void => {
-  const closeDialog = useCallback((e: MouseEvent): void => {
+  const closeDialog = useCallback((e: React.SyntheticEvent<HTMLDivElement>): void => {
     e.preventDefault()
     setShowDocDialog(false)
   }, [setShowDocDialog])
