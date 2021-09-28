@@ -1,0 +1,42 @@
+#!/bin/bash
+
+PATH=$PATH:./node_modules/.bin
+
+function clean {
+    rm -rf build/*
+}
+
+function copy_static {
+    cp public/* build
+    cp src/index.css build
+}
+
+function build {
+    clean && copy_static
+
+    esbuild \
+        --bundle \
+        --outfile=build/index.js \
+        --minify \
+        src/index.tsx
+}
+
+function start {
+    clean && copy_static
+
+    esbuild \
+        --bundle \
+        --outfile=build/index.js \
+        --servedir=build \
+        --sourcemap \
+        src/index.tsx
+}
+
+function help {
+    echo "Usage: $0 <task> <args>"
+    echo ""
+    echo "Tasks:"
+    compgen -A function | cat -n
+}
+
+"$@"
